@@ -75,7 +75,12 @@ function simulateMontyHall(numSims: number, changeChoice: boolean): GameLog[] {
     return allGames
 }
 
-app.get('/simulate', (req, res) => {
+const cors = require('cors')
+app.use(cors())
+
+app.get('/simulate',
+    cors(),
+    (req, res) => {
     const numSims: number = req.query.numberOfSimulations
     const changeChoice: boolean = req.query.changeChoice === "true"
 
@@ -87,9 +92,6 @@ app.get('/simulate', (req, res) => {
         allGames: allGames
     });
 });
-
-// const cors = require('cors')
-// app.use(cors())
 
 // run app
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
