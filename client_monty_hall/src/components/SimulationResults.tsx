@@ -10,7 +10,7 @@ const ResultWrap = styled.div`
   margin: 2em;
   display: block;   
   justify-content: space-around;
-  flex-direction: row;
+  font-size: 1rem;
 `;
 
 const Strong = styled.strong`
@@ -31,9 +31,9 @@ class SimulationResults extends React.Component<Props, State> {
     renderGameRow(game: BackendSimGame) {
         // Using 0.1.2 indices, using +1 to show 1.2.3
         return <ResultWrap>
-            <div>The prize was in door <strong>{game.prize + 1}.</strong>
-                The player chose <strong>{game.step1 + 1}.</strong>
-                The presenter opened door <strong>{game.step2 + 1}.</strong>
+            <div>The prize was in door <strong>{game.prize + 1}.</strong> {" "}
+                The player chose <strong>{game.step1 + 1}.</strong>{" "}
+                The presenter opened door <strong>{game.step2 + 1}.</strong>{" "}
                 {game.step3 !== game.step1
                     ? "The player changed their choice to " + (game.step3 + 1) + "."
                     : " "}</div>
@@ -58,9 +58,9 @@ class SimulationResults extends React.Component<Props, State> {
 
         return <div>
             <h2>Result of {r.numberOfSimulations} simulations:</h2>
-            <h3>The player choose to {r.changeChoice ? "" : <Strong>NOT</Strong>
+            <h3>The player chose to {r.changeChoice ? "" : <Strong>NOT</Strong>
             } change the door choice every time.</h3>
-            <h3>The player won {this.statistics(r)}% games.</h3>
+            <h3>The player won {this.statistics(r).toFixed(2)}% games.</h3>
 
             <ResultWrap>
                 {this.props.simulationResult?.allGames.map(this.renderGameRow)}
