@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 5001
+const PORT = 5000
 
 interface GameLog {
     prize: number, // where the prize was
