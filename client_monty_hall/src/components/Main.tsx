@@ -98,7 +98,7 @@ class Main extends React.Component<Props, State> {
     onStartSimulation(e: React.FormEvent): boolean {
         e.preventDefault()
 
-        fetch("http://localhost:5001/simulate?numberOfSimulations=" +
+        fetch("http://ec2-13-48-6-250.eu-north-1.compute.amazonaws.com:5000/simulate?numberOfSimulations=" +
             this.state.numberOfSimulations +
             "&changeChoice=" +
             this.state.changeChoice
